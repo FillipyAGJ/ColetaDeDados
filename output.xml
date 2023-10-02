@@ -1,0 +1,3561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20231002 11:14:43.939" rpa="false" schemaversion="4">
+<suite id="s1" name="pegaDados" source="c:\workspace\planilha python\tests\pegaDados.robot">
+<kw name="New Browser" library="Browser" type="SETUP">
+<arg>browser=chromium</arg>
+<arg>headless=${False}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231002 11:14:44.764" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\workspace\\planilha python\\browser\\traces\\e2ec3c2c-b53d-40e3-9d83-3fce0cf402a0"}</msg>
+<msg timestamp="20231002 11:14:45.299" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\workspace\\planilha python\\browser\\traces\\e2ec3c2c-b53d-40e3-9d83-3fce0cf402a0"}</msg>
+<status status="PASS" starttime="20231002 11:14:44.764" endtime="20231002 11:14:45.299"/>
+</kw>
+<test id="s1-t1" name="Pega dados TeraNano e preenche a planilha" line="30">
+<kw name="New Context" library="Browser" type="SETUP">
+<arg>viewport={'width': 1920, 'height': 1080}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<msg timestamp="20231002 11:14:45.299" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "hideRfBrowser": "",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 1080,
+    "width": 1920
+  }
+}</msg>
+<msg timestamp="20231002 11:14:45.339" level="INFO">Successfully created context. </msg>
+<msg timestamp="20231002 11:14:45.339" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'hideRfBrowser': '', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 1080, 'width': 1920}}</msg>
+<status status="PASS" starttime="20231002 11:14:45.299" endtime="20231002 11:14:45.339"/>
+</kw>
+<kw name="Site TeraNano está aberto" library="teranano">
+<kw name="New Page" library="Browser">
+<arg>http://www.teranano.ufu.br/pt-br/participantes/pesquisadores</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231002 11:14:47.826" level="INFO">Successfully initialized new page object and opened url: http://www.teranano.ufu.br/pt-br/participantes/pesquisadores</msg>
+<status status="PASS" starttime="20231002 11:14:45.339" endtime="20231002 11:14:47.826"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:45.339" endtime="20231002 11:14:47.826"/>
+</kw>
+<kw name="Pega os membros da equipe" library="teranano">
+<kw name="Wait For Elements State" library="Browser">
+<arg>//table</arg>
+<arg>stable</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231002 11:14:47.917" level="INFO">Waited for Element with selector //table at state stable</msg>
+<status status="PASS" starttime="20231002 11:14:47.826" endtime="20231002 11:14:47.917"/>
+</kw>
+<kw name="Get Elements" library="Browser">
+<var>${pesquisadoresNomes}</var>
+<arg>//table/tbody/tr/td[1]/a</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to Playwright [https://playwright.dev/docs/api/class-locator|Locator]
+for all matched elements by ``selector``.</doc>
+<msg timestamp="20231002 11:14:47.917" level="WARN">Keyword 'Get Elements' found both from a custom library 'Browser' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'Browser.Get Elements' or 'XML.Get Elements'.</msg>
+<msg timestamp="20231002 11:14:47.936" level="INFO">Found Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=0,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=1,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=2,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=3,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=4,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=5,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=6,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=7,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=8,Locator@//table/tbody/tr/td[1]/a &gt;&gt; nth=9 Locators successfully.</msg>
+<msg timestamp="20231002 11:14:47.936" level="INFO">${pesquisadoresNomes} = ['//table/tbody/tr/td[1]/a &gt;&gt; nth=0', '//table/tbody/tr/td[1]/a &gt;&gt; nth=1', '//table/tbody/tr/td[1]/a &gt;&gt; nth=2', '//table/tbody/tr/td[1]/a &gt;&gt; nth=3', '//table/tbody/tr/td[1]/a &gt;&gt; nth=4', '//table/tbody...</msg>
+<status status="PASS" starttime="20231002 11:14:47.917" endtime="20231002 11:14:47.936"/>
+</kw>
+<kw name="Get Elements" library="Browser">
+<var>${pesquisadoresInstituicao}</var>
+<arg>//table/tbody/tr/td[2]/a</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to Playwright [https://playwright.dev/docs/api/class-locator|Locator]
+for all matched elements by ``selector``.</doc>
+<msg timestamp="20231002 11:14:47.936" level="WARN">Keyword 'Get Elements' found both from a custom library 'Browser' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'Browser.Get Elements' or 'XML.Get Elements'.</msg>
+<msg timestamp="20231002 11:14:47.964" level="INFO">Found Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=0,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=1,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=2,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=3,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=4,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=5,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=6,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=7,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=8,Locator@//table/tbody/tr/td[2]/a &gt;&gt; nth=9 Locators successfully.</msg>
+<msg timestamp="20231002 11:14:47.965" level="INFO">${pesquisadoresInstituicao} = ['//table/tbody/tr/td[2]/a &gt;&gt; nth=0', '//table/tbody/tr/td[2]/a &gt;&gt; nth=1', '//table/tbody/tr/td[2]/a &gt;&gt; nth=2', '//table/tbody/tr/td[2]/a &gt;&gt; nth=3', '//table/tbody/tr/td[2]/a &gt;&gt; nth=4', '//table/tbody...</msg>
+<status status="PASS" starttime="20231002 11:14:47.936" endtime="20231002 11:14:47.965"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 11:14:47.967" level="INFO">${proximo} = True</msg>
+<status status="PASS" starttime="20231002 11:14:47.966" endtime="20231002 11:14:47.967"/>
+</kw>
+<while condition="${proximo}">
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.004" level="INFO">Text: 'Dr. Abhaya Dandekar'</msg>
+<msg timestamp="20231002 11:14:48.005" level="INFO">${nome} = Dr. Abhaya Dandekar</msg>
+<status status="PASS" starttime="20231002 11:14:47.969" endtime="20231002 11:14:48.005"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.065" level="INFO">Text: 'University of California Davis'</msg>
+<msg timestamp="20231002 11:14:48.065" level="INFO">${universidade} = University of California Davis</msg>
+<status status="PASS" starttime="20231002 11:14:48.006" endtime="20231002 11:14:48.065"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<msg timestamp="20231002 11:14:48.069" level="INFO">Set timeout to: 5000</msg>
+<status status="PASS" starttime="20231002 11:14:48.066" endtime="20231002 11:14:48.069"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.069" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of California Davis', 'Dr. Abhaya Dandekar']</msg>
+<status status="PASS" starttime="20231002 11:14:48.069" endtime="20231002 11:14:48.069"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.069" endtime="20231002 11:14:48.069"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:47.969" endtime="20231002 11:14:48.069"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.114" level="INFO">Text: 'Dr. Glauco Souza'</msg>
+<msg timestamp="20231002 11:14:48.115" level="INFO">${nome} = Dr. Glauco Souza</msg>
+<status status="PASS" starttime="20231002 11:14:48.081" endtime="20231002 11:14:48.115"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.162" level="INFO">Text: 'The University of Texas'</msg>
+<msg timestamp="20231002 11:14:48.163" level="INFO">${universidade} = The University of Texas</msg>
+<status status="PASS" starttime="20231002 11:14:48.116" endtime="20231002 11:14:48.163"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.163" endtime="20231002 11:14:48.164"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.165" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'The University of Texas', 'Dr. Glauco Souza']</msg>
+<status status="PASS" starttime="20231002 11:14:48.164" endtime="20231002 11:14:48.165"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.166" endtime="20231002 11:14:48.167"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.080" endtime="20231002 11:14:48.167"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.186" level="INFO">Text: 'Dr. Igor Stagljar'</msg>
+<msg timestamp="20231002 11:14:48.186" level="INFO">${nome} = Dr. Igor Stagljar</msg>
+<status status="PASS" starttime="20231002 11:14:48.168" endtime="20231002 11:14:48.186"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.204" level="INFO">Text: 'University of Toronto'</msg>
+<msg timestamp="20231002 11:14:48.204" level="INFO">${universidade} = University of Toronto</msg>
+<status status="PASS" starttime="20231002 11:14:48.186" endtime="20231002 11:14:48.204"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.205" endtime="20231002 11:14:48.205"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.206" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Toronto', 'Dr. Igor Stagljar']</msg>
+<status status="PASS" starttime="20231002 11:14:48.205" endtime="20231002 11:14:48.206"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.206" endtime="20231002 11:14:48.207"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.167" endtime="20231002 11:14:48.207"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.214" level="INFO">Text: 'Dr. Jan Baumbach'</msg>
+<msg timestamp="20231002 11:14:48.214" level="INFO">${nome} = Dr. Jan Baumbach</msg>
+<status status="PASS" starttime="20231002 11:14:48.208" endtime="20231002 11:14:48.214"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.235" level="INFO">Text: 'University of Southern Denmark'</msg>
+<msg timestamp="20231002 11:14:48.235" level="INFO">${universidade} = University of Southern Denmark</msg>
+<status status="PASS" starttime="20231002 11:14:48.214" endtime="20231002 11:14:48.235"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.235" endtime="20231002 11:14:48.235"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.235" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Southern Denmark', 'Dr. Jan Baumbach']</msg>
+<status status="PASS" starttime="20231002 11:14:48.235" endtime="20231002 11:14:48.235"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.235" endtime="20231002 11:14:48.246"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.208" endtime="20231002 11:14:48.247"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.266" level="INFO">Text: 'Dr. Jeroen Saeij'</msg>
+<msg timestamp="20231002 11:14:48.266" level="INFO">${nome} = Dr. Jeroen Saeij</msg>
+<status status="PASS" starttime="20231002 11:14:48.248" endtime="20231002 11:14:48.266"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.288" level="INFO">Text: 'Massachusetts Institute of Technology - MIT'</msg>
+<msg timestamp="20231002 11:14:48.288" level="INFO">${universidade} = Massachusetts Institute of Technology - MIT</msg>
+<status status="PASS" starttime="20231002 11:14:48.266" endtime="20231002 11:14:48.289"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.289" endtime="20231002 11:14:48.289"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.289" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Massachusetts Institute of Technology - MIT', 'Dr. Jeroen Saeij']</msg>
+<status status="PASS" starttime="20231002 11:14:48.289" endtime="20231002 11:14:48.289"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.289" endtime="20231002 11:14:48.289"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.248" endtime="20231002 11:14:48.289"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.313" level="INFO">Text: 'Dr. Jonny J. Blaker'</msg>
+<msg timestamp="20231002 11:14:48.314" level="INFO">${nome} = Dr. Jonny J. Blaker</msg>
+<status status="PASS" starttime="20231002 11:14:48.289" endtime="20231002 11:14:48.315"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.353" level="INFO">Text: 'University of Manchester'</msg>
+<msg timestamp="20231002 11:14:48.353" level="INFO">${universidade} = University of Manchester</msg>
+<status status="PASS" starttime="20231002 11:14:48.316" endtime="20231002 11:14:48.354"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.354" endtime="20231002 11:14:48.355"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.356" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Manchester', 'Dr. Jonny J. Blaker']</msg>
+<status status="PASS" starttime="20231002 11:14:48.356" endtime="20231002 11:14:48.356"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.356" endtime="20231002 11:14:48.356"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.289" endtime="20231002 11:14:48.356"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.385" level="INFO">Text: 'Dr. Lars Berglund'</msg>
+<msg timestamp="20231002 11:14:48.385" level="INFO">${nome} = Dr. Lars Berglund</msg>
+<status status="PASS" starttime="20231002 11:14:48.356" endtime="20231002 11:14:48.385"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.415" level="INFO">Text: 'University of California Davis'</msg>
+<msg timestamp="20231002 11:14:48.416" level="INFO">${universidade} = University of California Davis</msg>
+<status status="PASS" starttime="20231002 11:14:48.385" endtime="20231002 11:14:48.416"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.416" endtime="20231002 11:14:48.417"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.417" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of California Davis', 'Dr. Lars Berglund']</msg>
+<status status="PASS" starttime="20231002 11:14:48.417" endtime="20231002 11:14:48.417"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.417" endtime="20231002 11:14:48.417"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.356" endtime="20231002 11:14:48.417"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.434" level="INFO">Text: 'Dr. Malcolm Duthie'</msg>
+<msg timestamp="20231002 11:14:48.434" level="INFO">${nome} = Dr. Malcolm Duthie</msg>
+<status status="PASS" starttime="20231002 11:14:48.417" endtime="20231002 11:14:48.434"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.465" level="INFO">Text: 'Infectious Disease Research Institute'</msg>
+<msg timestamp="20231002 11:14:48.465" level="INFO">${universidade} = Infectious Disease Research Institute</msg>
+<status status="PASS" starttime="20231002 11:14:48.434" endtime="20231002 11:14:48.465"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.466" endtime="20231002 11:14:48.466"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.466" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Infectious Disease Research Institute', 'Dr. Malcolm Duthie']</msg>
+<status status="PASS" starttime="20231002 11:14:48.466" endtime="20231002 11:14:48.466"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.466" endtime="20231002 11:14:48.466"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.417" endtime="20231002 11:14:48.466"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.484" level="INFO">Text: 'Dr. Peter Briza'</msg>
+<msg timestamp="20231002 11:14:48.484" level="INFO">${nome} = Dr. Peter Briza</msg>
+<status status="PASS" starttime="20231002 11:14:48.466" endtime="20231002 11:14:48.484"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.501" level="INFO">Text: 'University of Salzburg'</msg>
+<msg timestamp="20231002 11:14:48.501" level="INFO">${universidade} = University of Salzburg</msg>
+<status status="PASS" starttime="20231002 11:14:48.484" endtime="20231002 11:14:48.501"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.501" endtime="20231002 11:14:48.501"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.501" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Salzburg', 'Dr. Peter Briza']</msg>
+<status status="PASS" starttime="20231002 11:14:48.501" endtime="20231002 11:14:48.501"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.501" endtime="20231002 11:14:48.513"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.466" endtime="20231002 11:14:48.514"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.534" level="INFO">Text: 'Dr. Peter J. Bradley'</msg>
+<msg timestamp="20231002 11:14:48.534" level="INFO">${nome} = Dr. Peter J. Bradley</msg>
+<status status="PASS" starttime="20231002 11:14:48.517" endtime="20231002 11:14:48.534"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:48.550" level="INFO">Text: 'University of California Los Angeles – UCLA'</msg>
+<msg timestamp="20231002 11:14:48.550" level="INFO">${universidade} = University of California Los Angeles – UCLA</msg>
+<status status="PASS" starttime="20231002 11:14:48.534" endtime="20231002 11:14:48.550"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:48.550" endtime="20231002 11:14:48.550"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:48.550" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of California Los Angeles – UCLA', 'Dr. Peter J. Bradley']</msg>
+<status status="PASS" starttime="20231002 11:14:48.550" endtime="20231002 11:14:48.550"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:48.550" endtime="20231002 11:14:48.550"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:48.515" endtime="20231002 11:14:48.550"/>
+</iter>
+<status status="PASS" starttime="20231002 11:14:47.968" endtime="20231002 11:14:48.550"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<msg timestamp="20231002 11:14:49.585" level="INFO">Property: {'0': 'next'}</msg>
+<msg timestamp="20231002 11:14:50.002" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:14:50.002" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:14:50.002" level="FAIL">Classes of //ul[contains(@class, "pagination")]/li[contains(@class, 'next')] '['next']' (list) should contain '['disabled']' (list)</msg>
+<status status="FAIL" starttime="20231002 11:14:48.550" endtime="20231002 11:14:50.005"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:14:50.006" endtime="20231002 11:14:50.006"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:48.550" endtime="20231002 11:14:50.006"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231002 11:14:50.006" endtime="20231002 11:14:50.587"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="PASS" starttime="20231002 11:14:50.588" endtime="20231002 11:14:51.378"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:50.006" endtime="20231002 11:14:51.378"/>
+</branch>
+<status status="PASS" starttime="20231002 11:14:48.550" endtime="20231002 11:14:51.378"/>
+</try>
+<status status="PASS" starttime="20231002 11:14:47.967" endtime="20231002 11:14:51.378"/>
+</iter>
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.432" level="INFO">Text: 'Dr. Ralph de Vere White'</msg>
+<msg timestamp="20231002 11:14:51.432" level="INFO">${nome} = Dr. Ralph de Vere White</msg>
+<status status="PASS" starttime="20231002 11:14:51.378" endtime="20231002 11:14:51.432"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.456" level="INFO">Text: 'University of California Davis'</msg>
+<msg timestamp="20231002 11:14:51.456" level="INFO">${universidade} = University of California Davis</msg>
+<status status="PASS" starttime="20231002 11:14:51.433" endtime="20231002 11:14:51.456"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.457" endtime="20231002 11:14:51.457"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.458" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of California Davis', 'Dr. Ralph de Vere White']</msg>
+<status status="PASS" starttime="20231002 11:14:51.458" endtime="20231002 11:14:51.459"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.459" endtime="20231002 11:14:51.461"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.378" endtime="20231002 11:14:51.461"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.494" level="INFO">Text: 'Dr. Satya Dandekar'</msg>
+<msg timestamp="20231002 11:14:51.494" level="INFO">${nome} = Dr. Satya Dandekar</msg>
+<status status="PASS" starttime="20231002 11:14:51.463" endtime="20231002 11:14:51.495"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.527" level="INFO">Text: 'University of California Davis'</msg>
+<msg timestamp="20231002 11:14:51.527" level="INFO">${universidade} = University of California Davis</msg>
+<status status="PASS" starttime="20231002 11:14:51.496" endtime="20231002 11:14:51.527"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.528" endtime="20231002 11:14:51.529"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.532" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of California Davis', 'Dr. Satya Dandekar']</msg>
+<status status="PASS" starttime="20231002 11:14:51.530" endtime="20231002 11:14:51.532"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.533" endtime="20231002 11:14:51.535"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.463" endtime="20231002 11:14:51.536"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.577" level="INFO">Text: 'Dr. Thomas Kislinger'</msg>
+<msg timestamp="20231002 11:14:51.577" level="INFO">${nome} = Dr. Thomas Kislinger</msg>
+<status status="PASS" starttime="20231002 11:14:51.537" endtime="20231002 11:14:51.578"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.607" level="INFO">Text: 'University of Toronto'</msg>
+<msg timestamp="20231002 11:14:51.607" level="INFO">${universidade} = University of Toronto</msg>
+<status status="PASS" starttime="20231002 11:14:51.578" endtime="20231002 11:14:51.608"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.608" endtime="20231002 11:14:51.608"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.609" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Toronto', 'Dr. Thomas Kislinger']</msg>
+<status status="PASS" starttime="20231002 11:14:51.608" endtime="20231002 11:14:51.609"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.609" endtime="20231002 11:14:51.611"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.537" endtime="20231002 11:14:51.611"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.640" level="INFO">Text: 'Dr. Yves Le Loir'</msg>
+<msg timestamp="20231002 11:14:51.641" level="INFO">${nome} = Dr. Yves Le Loir</msg>
+<status status="PASS" starttime="20231002 11:14:51.613" endtime="20231002 11:14:51.641"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.666" level="INFO">Text: 'UMR INRA'</msg>
+<msg timestamp="20231002 11:14:51.666" level="INFO">${universidade} = UMR INRA</msg>
+<status status="PASS" starttime="20231002 11:14:51.642" endtime="20231002 11:14:51.667"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.667" endtime="20231002 11:14:51.668"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.670" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'UMR INRA', 'Dr. Yves Le Loir']</msg>
+<status status="PASS" starttime="20231002 11:14:51.668" endtime="20231002 11:14:51.670"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.671" endtime="20231002 11:14:51.673"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.612" endtime="20231002 11:14:51.674"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.703" level="INFO">Text: 'Dra. Adriana Bassini-Cameron'</msg>
+<msg timestamp="20231002 11:14:51.703" level="INFO">${nome} = Dra. Adriana Bassini-Cameron</msg>
+<status status="PASS" starttime="20231002 11:14:51.675" endtime="20231002 11:14:51.703"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.728" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:51.729" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:51.704" endtime="20231002 11:14:51.729"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.730" endtime="20231002 11:14:51.730"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.732" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Dra. Adriana Bassini-Cameron']</msg>
+<status status="PASS" starttime="20231002 11:14:51.731" endtime="20231002 11:14:51.732"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.733" endtime="20231002 11:14:51.735"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.675" endtime="20231002 11:14:51.736"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.770" level="INFO">Text: 'Dra. Annemiek Geluk'</msg>
+<msg timestamp="20231002 11:14:51.770" level="INFO">${nome} = Dra. Annemiek Geluk</msg>
+<status status="PASS" starttime="20231002 11:14:51.737" endtime="20231002 11:14:51.770"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.819" level="INFO">Text: 'Leiden University Medical Center'</msg>
+<msg timestamp="20231002 11:14:51.819" level="INFO">${universidade} = Leiden University Medical Center</msg>
+<status status="PASS" starttime="20231002 11:14:51.771" endtime="20231002 11:14:51.819"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.819" endtime="20231002 11:14:51.821"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.821" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Leiden University Medical Center', 'Dra. Annemiek Geluk']</msg>
+<status status="PASS" starttime="20231002 11:14:51.821" endtime="20231002 11:14:51.821"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.821" endtime="20231002 11:14:51.826"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.736" endtime="20231002 11:14:51.826"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.844" level="INFO">Text: 'Dra. Fatima Ferreira-Briza'</msg>
+<msg timestamp="20231002 11:14:51.844" level="INFO">${nome} = Dra. Fatima Ferreira-Briza</msg>
+<status status="PASS" starttime="20231002 11:14:51.827" endtime="20231002 11:14:51.844"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.878" level="INFO">Text: 'University of Salzburg'</msg>
+<msg timestamp="20231002 11:14:51.878" level="INFO">${universidade} = University of Salzburg</msg>
+<status status="PASS" starttime="20231002 11:14:51.844" endtime="20231002 11:14:51.878"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.878" endtime="20231002 11:14:51.878"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.878" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'University of Salzburg', 'Dra. Fatima Ferreira-Briza']</msg>
+<status status="PASS" starttime="20231002 11:14:51.878" endtime="20231002 11:14:51.878"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.878" endtime="20231002 11:14:51.878"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.827" endtime="20231002 11:14:51.878"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.912" level="INFO">Text: 'Dra. Luciana Machado Bastos'</msg>
+<msg timestamp="20231002 11:14:51.912" level="INFO">${nome} = Dra. Luciana Machado Bastos</msg>
+<status status="PASS" starttime="20231002 11:14:51.878" endtime="20231002 11:14:51.912"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.929" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:51.929" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:51.912" endtime="20231002 11:14:51.929"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.929" endtime="20231002 11:14:51.929"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.929" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Dra. Luciana Machado Bastos']</msg>
+<status status="PASS" starttime="20231002 11:14:51.929" endtime="20231002 11:14:51.929"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.943" endtime="20231002 11:14:51.944"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.878" endtime="20231002 11:14:51.945"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.961" level="INFO">Text: 'Dra. Luciane Regina Cavalli'</msg>
+<msg timestamp="20231002 11:14:51.961" level="INFO">${nome} = Dra. Luciane Regina Cavalli</msg>
+<status status="PASS" starttime="20231002 11:14:51.945" endtime="20231002 11:14:51.961"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:51.978" level="INFO">Text: 'Georgetown University Medical Center'</msg>
+<msg timestamp="20231002 11:14:51.978" level="INFO">${universidade} = Georgetown University Medical Center</msg>
+<status status="PASS" starttime="20231002 11:14:51.961" endtime="20231002 11:14:51.978"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:51.978" endtime="20231002 11:14:51.978"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:51.978" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Georgetown University Medical Center', 'Dra. Luciane Regina Cavalli']</msg>
+<status status="PASS" starttime="20231002 11:14:51.978" endtime="20231002 11:14:51.978"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:51.978" endtime="20231002 11:14:51.978"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.945" endtime="20231002 11:14:51.978"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:52.011" level="INFO">Text: 'Dra. Natassia Caroline Resende Corrêa'</msg>
+<msg timestamp="20231002 11:14:52.011" level="INFO">${nome} = Dra. Natassia Caroline Resende Corrêa</msg>
+<status status="PASS" starttime="20231002 11:14:51.978" endtime="20231002 11:14:52.011"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:52.028" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:52.028" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:52.011" endtime="20231002 11:14:52.028"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:52.028" endtime="20231002 11:14:52.028"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:52.028" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Dra. Natassia Caroline Resende Corrêa']</msg>
+<status status="PASS" starttime="20231002 11:14:52.028" endtime="20231002 11:14:52.028"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:52.028" endtime="20231002 11:14:52.028"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:51.978" endtime="20231002 11:14:52.028"/>
+</iter>
+<status status="PASS" starttime="20231002 11:14:51.378" endtime="20231002 11:14:52.028"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<msg timestamp="20231002 11:14:53.073" level="INFO">Property: {'0': 'next'}</msg>
+<msg timestamp="20231002 11:14:53.269" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-2.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-2.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:14:53.269" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:14:53.269" level="FAIL">Classes of //ul[contains(@class, "pagination")]/li[contains(@class, 'next')] '['next']' (list) should contain '['disabled']' (list)</msg>
+<status status="FAIL" starttime="20231002 11:14:52.028" endtime="20231002 11:14:53.270"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:14:53.271" endtime="20231002 11:14:53.271"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:52.028" endtime="20231002 11:14:53.271"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231002 11:14:53.272" endtime="20231002 11:14:53.798"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="PASS" starttime="20231002 11:14:53.799" endtime="20231002 11:14:54.526"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:53.272" endtime="20231002 11:14:54.526"/>
+</branch>
+<status status="PASS" starttime="20231002 11:14:52.028" endtime="20231002 11:14:54.526"/>
+</try>
+<status status="PASS" starttime="20231002 11:14:51.378" endtime="20231002 11:14:54.526"/>
+</iter>
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.568" level="INFO">Text: 'Murillo Guimarães Carneiro'</msg>
+<msg timestamp="20231002 11:14:54.568" level="INFO">${nome} = Murillo Guimarães Carneiro</msg>
+<status status="PASS" starttime="20231002 11:14:54.526" endtime="20231002 11:14:54.568"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.586" level="INFO">Text: 'Professor Adjunto'</msg>
+<msg timestamp="20231002 11:14:54.587" level="INFO">${universidade} = Professor Adjunto</msg>
+<status status="PASS" starttime="20231002 11:14:54.568" endtime="20231002 11:14:54.587"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.587" endtime="20231002 11:14:54.587"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.588" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Professor Adjunto', 'Murillo Guimarães Carneiro']</msg>
+<status status="PASS" starttime="20231002 11:14:54.587" endtime="20231002 11:14:54.588"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.588" endtime="20231002 11:14:54.589"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.526" endtime="20231002 11:14:54.590"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.612" level="INFO">Text: 'Prof. Dr. Ademar Benévolo Lugão'</msg>
+<msg timestamp="20231002 11:14:54.612" level="INFO">${nome} = Prof. Dr. Ademar Benévolo Lugão</msg>
+<status status="PASS" starttime="20231002 11:14:54.591" endtime="20231002 11:14:54.612"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.630" level="INFO">Text: 'IPEN - Instituto de Pesquisas Energéticas e Nucleares'</msg>
+<msg timestamp="20231002 11:14:54.630" level="INFO">${universidade} = IPEN - Instituto de Pesquisas Energéticas e Nucleares</msg>
+<status status="PASS" starttime="20231002 11:14:54.612" endtime="20231002 11:14:54.630"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.630" endtime="20231002 11:14:54.631"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.632" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'IPEN - Instituto de Pesquisas Energéticas e Nucleares', 'Prof. Dr. Ademar Benévolo Lugão']</msg>
+<status status="PASS" starttime="20231002 11:14:54.631" endtime="20231002 11:14:54.632"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.632" endtime="20231002 11:14:54.633"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.590" endtime="20231002 11:14:54.633"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.656" level="INFO">Text: 'Prof. Dr. Alexandre de Paula Rogério'</msg>
+<msg timestamp="20231002 11:14:54.656" level="INFO">${nome} = Prof. Dr. Alexandre de Paula Rogério</msg>
+<status status="PASS" starttime="20231002 11:14:54.634" endtime="20231002 11:14:54.657"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.681" level="INFO">Text: 'Universidade Federal do Triangulo Mineiro'</msg>
+<msg timestamp="20231002 11:14:54.681" level="INFO">${universidade} = Universidade Federal do Triangulo Mineiro</msg>
+<status status="PASS" starttime="20231002 11:14:54.657" endtime="20231002 11:14:54.681"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.682" endtime="20231002 11:14:54.682"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.683" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal do Triangulo Mineiro', 'Prof. Dr. Alexandre de Paula Rogério']</msg>
+<status status="PASS" starttime="20231002 11:14:54.682" endtime="20231002 11:14:54.683"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.683" endtime="20231002 11:14:54.684"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.634" endtime="20231002 11:14:54.685"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.705" level="INFO">Text: 'Prof. Dr. Antonio Carlos Rosário Vallinoto'</msg>
+<msg timestamp="20231002 11:14:54.705" level="INFO">${nome} = Prof. Dr. Antonio Carlos Rosário Vallinoto</msg>
+<status status="PASS" starttime="20231002 11:14:54.686" endtime="20231002 11:14:54.705"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.722" level="INFO">Text: 'Universidade Federal do Pará'</msg>
+<msg timestamp="20231002 11:14:54.723" level="INFO">${universidade} = Universidade Federal do Pará</msg>
+<status status="PASS" starttime="20231002 11:14:54.705" endtime="20231002 11:14:54.723"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.723" endtime="20231002 11:14:54.724"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.726" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal do Pará', 'Prof. Dr. Antonio Carlos Rosário Vallinoto']</msg>
+<status status="PASS" starttime="20231002 11:14:54.724" endtime="20231002 11:14:54.726"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.727" endtime="20231002 11:14:54.728"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.685" endtime="20231002 11:14:54.729"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.750" level="INFO">Text: 'Prof. Dr. Carlos José Soares'</msg>
+<msg timestamp="20231002 11:14:54.750" level="INFO">${nome} = Prof. Dr. Carlos José Soares</msg>
+<status status="PASS" starttime="20231002 11:14:54.729" endtime="20231002 11:14:54.750"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.768" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:54.769" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:54.751" endtime="20231002 11:14:54.769"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.770" endtime="20231002 11:14:54.771"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.773" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Carlos José Soares']</msg>
+<status status="PASS" starttime="20231002 11:14:54.771" endtime="20231002 11:14:54.773"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.774" endtime="20231002 11:14:54.776"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.729" endtime="20231002 11:14:54.776"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.828" level="INFO">Text: 'Prof. Dr. Carlos Ueira Vieira'</msg>
+<msg timestamp="20231002 11:14:54.829" level="INFO">${nome} = Prof. Dr. Carlos Ueira Vieira</msg>
+<status status="PASS" starttime="20231002 11:14:54.778" endtime="20231002 11:14:54.829"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.851" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:54.851" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:54.829" endtime="20231002 11:14:54.851"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.851" endtime="20231002 11:14:54.852"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.853" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Carlos Ueira Vieira']</msg>
+<status status="PASS" starttime="20231002 11:14:54.852" endtime="20231002 11:14:54.853"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.853" endtime="20231002 11:14:54.854"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.777" endtime="20231002 11:14:54.854"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.882" level="INFO">Text: 'Prof. Dr. David Nascimento Silva Teixeira'</msg>
+<msg timestamp="20231002 11:14:54.882" level="INFO">${nome} = Prof. Dr. David Nascimento Silva Teixeira</msg>
+<status status="PASS" starttime="20231002 11:14:54.855" endtime="20231002 11:14:54.882"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.897" level="INFO">Text: 'Universidade Federal do Triangulo Mineiro'</msg>
+<msg timestamp="20231002 11:14:54.897" level="INFO">${universidade} = Universidade Federal do Triangulo Mineiro</msg>
+<status status="PASS" starttime="20231002 11:14:54.882" endtime="20231002 11:14:54.897"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.898" endtime="20231002 11:14:54.898"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.899" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal do Triangulo Mineiro', 'Prof. Dr. David Nascimento Silva Teixeira']</msg>
+<status status="PASS" starttime="20231002 11:14:54.898" endtime="20231002 11:14:54.899"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.899" endtime="20231002 11:14:54.900"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.855" endtime="20231002 11:14:54.901"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.920" level="INFO">Text: 'Prof. Dr. Eliton Souto de Medeiros'</msg>
+<msg timestamp="20231002 11:14:54.920" level="INFO">${nome} = Prof. Dr. Eliton Souto de Medeiros</msg>
+<status status="PASS" starttime="20231002 11:14:54.902" endtime="20231002 11:14:54.921"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.938" level="INFO">Text: 'Universidade Federal da Paraíba'</msg>
+<msg timestamp="20231002 11:14:54.938" level="INFO">${universidade} = Universidade Federal da Paraíba</msg>
+<status status="PASS" starttime="20231002 11:14:54.921" endtime="20231002 11:14:54.938"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.938" endtime="20231002 11:14:54.939"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.940" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Paraíba', 'Prof. Dr. Eliton Souto de Medeiros']</msg>
+<status status="PASS" starttime="20231002 11:14:54.939" endtime="20231002 11:14:54.940"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.940" endtime="20231002 11:14:54.942"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.901" endtime="20231002 11:14:54.943"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.961" level="INFO">Text: 'Prof. Dr. Elmiro Santos Resende'</msg>
+<msg timestamp="20231002 11:14:54.962" level="INFO">${nome} = Prof. Dr. Elmiro Santos Resende</msg>
+<status status="PASS" starttime="20231002 11:14:54.943" endtime="20231002 11:14:54.962"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:54.977" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:54.977" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:54.963" endtime="20231002 11:14:54.977"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:54.978" endtime="20231002 11:14:54.978"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:54.980" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Elmiro Santos Resende']</msg>
+<status status="PASS" starttime="20231002 11:14:54.978" endtime="20231002 11:14:54.980"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:54.981" endtime="20231002 11:14:54.982"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.943" endtime="20231002 11:14:54.982"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:55.014" level="INFO">Text: 'Prof. Dr. Ernesto Akio Taketomi'</msg>
+<msg timestamp="20231002 11:14:55.014" level="INFO">${nome} = Prof. Dr. Ernesto Akio Taketomi</msg>
+<status status="PASS" starttime="20231002 11:14:54.984" endtime="20231002 11:14:55.014"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:55.027" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:55.027" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:55.015" endtime="20231002 11:14:55.027"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:55.027" endtime="20231002 11:14:55.028"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:55.028" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Ernesto Akio Taketomi']</msg>
+<status status="PASS" starttime="20231002 11:14:55.028" endtime="20231002 11:14:55.029"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:55.029" endtime="20231002 11:14:55.030"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:54.983" endtime="20231002 11:14:55.030"/>
+</iter>
+<status status="PASS" starttime="20231002 11:14:54.526" endtime="20231002 11:14:55.030"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<msg timestamp="20231002 11:14:56.075" level="INFO">Property: {'0': 'next'}</msg>
+<msg timestamp="20231002 11:14:56.270" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-3.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-3.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:14:56.271" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:14:56.271" level="FAIL">Classes of //ul[contains(@class, "pagination")]/li[contains(@class, 'next')] '['next']' (list) should contain '['disabled']' (list)</msg>
+<status status="FAIL" starttime="20231002 11:14:55.031" endtime="20231002 11:14:56.272"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:14:56.273" endtime="20231002 11:14:56.273"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:55.031" endtime="20231002 11:14:56.274"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231002 11:14:56.274" endtime="20231002 11:14:56.794"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="PASS" starttime="20231002 11:14:56.795" endtime="20231002 11:14:57.551"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:56.274" endtime="20231002 11:14:57.551"/>
+</branch>
+<status status="PASS" starttime="20231002 11:14:55.031" endtime="20231002 11:14:57.551"/>
+</try>
+<status status="PASS" starttime="20231002 11:14:54.526" endtime="20231002 11:14:57.551"/>
+</iter>
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.586" level="INFO">Text: 'Prof. Dr. Foued Salmen Espíndola'</msg>
+<msg timestamp="20231002 11:14:57.587" level="INFO">${nome} = Prof. Dr. Foued Salmen Espíndola</msg>
+<status status="PASS" starttime="20231002 11:14:57.552" endtime="20231002 11:14:57.587"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.605" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:57.606" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:57.587" endtime="20231002 11:14:57.606"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.607" endtime="20231002 11:14:57.608"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.609" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Foued Salmen Espíndola']</msg>
+<status status="PASS" starttime="20231002 11:14:57.609" endtime="20231002 11:14:57.609"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.610" endtime="20231002 11:14:57.611"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.552" endtime="20231002 11:14:57.612"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.632" level="INFO">Text: 'Prof. Dr. Hugo Lemes Carlo'</msg>
+<msg timestamp="20231002 11:14:57.633" level="INFO">${nome} = Prof. Dr. Hugo Lemes Carlo</msg>
+<status status="PASS" starttime="20231002 11:14:57.612" endtime="20231002 11:14:57.633"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.652" level="INFO">Text: 'Universidade Federal da Paraíba'</msg>
+<msg timestamp="20231002 11:14:57.653" level="INFO">${universidade} = Universidade Federal da Paraíba</msg>
+<status status="PASS" starttime="20231002 11:14:57.633" endtime="20231002 11:14:57.653"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.653" endtime="20231002 11:14:57.653"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.654" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Paraíba', 'Prof. Dr. Hugo Lemes Carlo']</msg>
+<status status="PASS" starttime="20231002 11:14:57.653" endtime="20231002 11:14:57.654"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.655" endtime="20231002 11:14:57.657"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.612" endtime="20231002 11:14:57.658"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.679" level="INFO">Text: 'Prof. Dr. Jair Pereira da Cunha Júnior'</msg>
+<msg timestamp="20231002 11:14:57.679" level="INFO">${nome} = Prof. Dr. Jair Pereira da Cunha Júnior</msg>
+<status status="PASS" starttime="20231002 11:14:57.660" endtime="20231002 11:14:57.679"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.697" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:57.698" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:57.680" endtime="20231002 11:14:57.698"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.698" endtime="20231002 11:14:57.698"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.699" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Jair Pereira da Cunha Júnior']</msg>
+<status status="PASS" starttime="20231002 11:14:57.698" endtime="20231002 11:14:57.699"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.699" endtime="20231002 11:14:57.700"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.659" endtime="20231002 11:14:57.701"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.720" level="INFO">Text: 'Prof. Dr. João Marcos Madurro'</msg>
+<msg timestamp="20231002 11:14:57.720" level="INFO">${nome} = Prof. Dr. João Marcos Madurro</msg>
+<status status="PASS" starttime="20231002 11:14:57.701" endtime="20231002 11:14:57.721"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.737" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:57.738" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:57.721" endtime="20231002 11:14:57.738"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.739" endtime="20231002 11:14:57.741"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.742" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. João Marcos Madurro']</msg>
+<status status="PASS" starttime="20231002 11:14:57.741" endtime="20231002 11:14:57.742"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.742" endtime="20231002 11:14:57.744"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.701" endtime="20231002 11:14:57.744"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.803" level="INFO">Text: 'Prof. Dr. José Roberto Mineo'</msg>
+<msg timestamp="20231002 11:14:57.804" level="INFO">${nome} = Prof. Dr. José Roberto Mineo</msg>
+<status status="PASS" starttime="20231002 11:14:57.745" endtime="20231002 11:14:57.804"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.846" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:57.847" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:57.805" endtime="20231002 11:14:57.847"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.848" endtime="20231002 11:14:57.848"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.850" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. José Roberto Mineo']</msg>
+<status status="PASS" starttime="20231002 11:14:57.849" endtime="20231002 11:14:57.850"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.851" endtime="20231002 11:14:57.852"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.744" endtime="20231002 11:14:57.853"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.875" level="INFO">Text: 'Prof. Dr. Lúcio Roberto Cançado Castellano'</msg>
+<msg timestamp="20231002 11:14:57.875" level="INFO">${nome} = Prof. Dr. Lúcio Roberto Cançado Castellano</msg>
+<status status="PASS" starttime="20231002 11:14:57.854" endtime="20231002 11:14:57.876"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.894" level="INFO">Text: 'Universidade Federal da Paraíba'</msg>
+<msg timestamp="20231002 11:14:57.894" level="INFO">${universidade} = Universidade Federal da Paraíba</msg>
+<status status="PASS" starttime="20231002 11:14:57.876" endtime="20231002 11:14:57.895"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.895" endtime="20231002 11:14:57.895"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.897" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Paraíba', 'Prof. Dr. Lúcio Roberto Cançado Castellano']</msg>
+<status status="PASS" starttime="20231002 11:14:57.896" endtime="20231002 11:14:57.897"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.897" endtime="20231002 11:14:57.898"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.853" endtime="20231002 11:14:57.898"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.906" level="INFO">Text: 'Prof. Dr. Luis Gustavo Carvalho Pacheco'</msg>
+<msg timestamp="20231002 11:14:57.921" level="INFO">${nome} = Prof. Dr. Luis Gustavo Carvalho Pacheco</msg>
+<status status="PASS" starttime="20231002 11:14:57.898" endtime="20231002 11:14:57.921"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.939" level="INFO">Text: 'Universidade Federal da Bahia'</msg>
+<msg timestamp="20231002 11:14:57.939" level="INFO">${universidade} = Universidade Federal da Bahia</msg>
+<status status="PASS" starttime="20231002 11:14:57.923" endtime="20231002 11:14:57.939"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.939" endtime="20231002 11:14:57.939"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.939" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Bahia', 'Prof. Dr. Luis Gustavo Carvalho Pacheco']</msg>
+<status status="PASS" starttime="20231002 11:14:57.939" endtime="20231002 11:14:57.939"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.939" endtime="20231002 11:14:57.939"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.898" endtime="20231002 11:14:57.939"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.958" level="INFO">Text: 'Prof. Dr. Luiz Claudio Cameron'</msg>
+<msg timestamp="20231002 11:14:57.958" level="INFO">${nome} = Prof. Dr. Luiz Claudio Cameron</msg>
+<status status="PASS" starttime="20231002 11:14:57.939" endtime="20231002 11:14:57.958"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:57.976" level="INFO">Text: 'UNIRIO'</msg>
+<msg timestamp="20231002 11:14:57.976" level="INFO">${universidade} = UNIRIO</msg>
+<status status="PASS" starttime="20231002 11:14:57.958" endtime="20231002 11:14:57.976"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:57.976" endtime="20231002 11:14:57.976"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:57.976" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'UNIRIO', 'Prof. Dr. Luiz Claudio Cameron']</msg>
+<status status="PASS" starttime="20231002 11:14:57.976" endtime="20231002 11:14:57.976"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:57.976" endtime="20231002 11:14:57.976"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.939" endtime="20231002 11:14:57.976"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:58.012" level="INFO">Text: 'Prof. Dr. Luiz Fernando Almeida Machado'</msg>
+<msg timestamp="20231002 11:14:58.012" level="INFO">${nome} = Prof. Dr. Luiz Fernando Almeida Machado</msg>
+<status status="PASS" starttime="20231002 11:14:57.976" endtime="20231002 11:14:58.012"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:58.028" level="INFO">Text: 'Universidade Federal do Pará'</msg>
+<msg timestamp="20231002 11:14:58.029" level="INFO">${universidade} = Universidade Federal do Pará</msg>
+<status status="PASS" starttime="20231002 11:14:58.013" endtime="20231002 11:14:58.029"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:58.029" endtime="20231002 11:14:58.029"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:58.030" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal do Pará', 'Prof. Dr. Luiz Fernando Almeida Machado']</msg>
+<status status="PASS" starttime="20231002 11:14:58.030" endtime="20231002 11:14:58.030"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:58.031" endtime="20231002 11:14:58.032"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:57.976" endtime="20231002 11:14:58.032"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:58.082" level="INFO">Text: 'Prof. Dr. Luiz Ricardo Goulart'</msg>
+<msg timestamp="20231002 11:14:58.083" level="INFO">${nome} = Prof. Dr. Luiz Ricardo Goulart</msg>
+<status status="PASS" starttime="20231002 11:14:58.033" endtime="20231002 11:14:58.083"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:14:58.111" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:14:58.111" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:14:58.084" endtime="20231002 11:14:58.111"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:14:58.111" endtime="20231002 11:14:58.111"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:14:58.111" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Luiz Ricardo Goulart']</msg>
+<status status="PASS" starttime="20231002 11:14:58.111" endtime="20231002 11:14:58.111"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:14:58.111" endtime="20231002 11:14:58.111"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:58.032" endtime="20231002 11:14:58.111"/>
+</iter>
+<status status="PASS" starttime="20231002 11:14:57.552" endtime="20231002 11:14:58.111"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<msg timestamp="20231002 11:14:59.154" level="INFO">Property: {'0': 'next'}</msg>
+<msg timestamp="20231002 11:14:59.346" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-4.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-4.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:14:59.347" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:14:59.347" level="FAIL">Classes of //ul[contains(@class, "pagination")]/li[contains(@class, 'next')] '['next']' (list) should contain '['disabled']' (list)</msg>
+<status status="FAIL" starttime="20231002 11:14:58.121" endtime="20231002 11:14:59.348"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:14:59.348" endtime="20231002 11:14:59.348"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:58.111" endtime="20231002 11:14:59.348"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231002 11:14:59.349" endtime="20231002 11:14:59.851"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="PASS" starttime="20231002 11:14:59.852" endtime="20231002 11:15:00.609"/>
+</kw>
+<status status="PASS" starttime="20231002 11:14:59.349" endtime="20231002 11:15:00.609"/>
+</branch>
+<status status="PASS" starttime="20231002 11:14:58.111" endtime="20231002 11:15:00.610"/>
+</try>
+<status status="PASS" starttime="20231002 11:14:57.552" endtime="20231002 11:15:00.610"/>
+</iter>
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.655" level="INFO">Text: 'Prof. Dr. Marcelo Emilio Beletti'</msg>
+<msg timestamp="20231002 11:15:00.655" level="INFO">${nome} = Prof. Dr. Marcelo Emilio Beletti</msg>
+<status status="PASS" starttime="20231002 11:15:00.611" endtime="20231002 11:15:00.655"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.673" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:00.673" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:00.656" endtime="20231002 11:15:00.673"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.673" endtime="20231002 11:15:00.674"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.674" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Marcelo Emilio Beletti']</msg>
+<status status="PASS" starttime="20231002 11:15:00.674" endtime="20231002 11:15:00.675"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.675" endtime="20231002 11:15:00.676"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.610" endtime="20231002 11:15:00.676"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.697" level="INFO">Text: 'Prof. Dr. Marcelo José Barbosa Silva'</msg>
+<msg timestamp="20231002 11:15:00.697" level="INFO">${nome} = Prof. Dr. Marcelo José Barbosa Silva</msg>
+<status status="PASS" starttime="20231002 11:15:00.677" endtime="20231002 11:15:00.697"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.715" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:00.716" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:00.698" endtime="20231002 11:15:00.716"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.716" endtime="20231002 11:15:00.716"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.717" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Marcelo José Barbosa Silva']</msg>
+<status status="PASS" starttime="20231002 11:15:00.716" endtime="20231002 11:15:00.718"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.718" endtime="20231002 11:15:00.721"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.676" endtime="20231002 11:15:00.721"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.744" level="INFO">Text: 'Prof. Dr. Marcos Vinícius Dias Vermelho'</msg>
+<msg timestamp="20231002 11:15:00.745" level="INFO">${nome} = Prof. Dr. Marcos Vinícius Dias Vermelho</msg>
+<status status="PASS" starttime="20231002 11:15:00.722" endtime="20231002 11:15:00.745"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.764" level="INFO">Text: 'Universidade Federal de Alagoas'</msg>
+<msg timestamp="20231002 11:15:00.765" level="INFO">${universidade} = Universidade Federal de Alagoas</msg>
+<status status="PASS" starttime="20231002 11:15:00.745" endtime="20231002 11:15:00.765"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.766" endtime="20231002 11:15:00.766"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.768" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Alagoas', 'Prof. Dr. Marcos Vinícius Dias Vermelho']</msg>
+<status status="PASS" starttime="20231002 11:15:00.767" endtime="20231002 11:15:00.769"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.769" endtime="20231002 11:15:00.772"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.722" endtime="20231002 11:15:00.772"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.792" level="INFO">Text: 'Prof. Dr. Noélio Oliveira Dantas'</msg>
+<msg timestamp="20231002 11:15:00.793" level="INFO">${nome} = Prof. Dr. Noélio Oliveira Dantas</msg>
+<status status="PASS" starttime="20231002 11:15:00.773" endtime="20231002 11:15:00.793"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.811" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:00.811" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:00.793" endtime="20231002 11:15:00.811"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.812" endtime="20231002 11:15:00.812"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.813" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Noélio Oliveira Dantas']</msg>
+<status status="PASS" starttime="20231002 11:15:00.812" endtime="20231002 11:15:00.813"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.814" endtime="20231002 11:15:00.815"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.772" endtime="20231002 11:15:00.815"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.869" level="INFO">Text: 'Prof. Dr. Paulo Rogério Ferreti Bonan'</msg>
+<msg timestamp="20231002 11:15:00.869" level="INFO">${nome} = Prof. Dr. Paulo Rogério Ferreti Bonan</msg>
+<status status="PASS" starttime="20231002 11:15:00.816" endtime="20231002 11:15:00.870"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.892" level="INFO">Text: 'Universidade Federal da Paraíba'</msg>
+<msg timestamp="20231002 11:15:00.893" level="INFO">${universidade} = Universidade Federal da Paraíba</msg>
+<status status="PASS" starttime="20231002 11:15:00.870" endtime="20231002 11:15:00.893"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.893" endtime="20231002 11:15:00.894"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.896" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Paraíba', 'Prof. Dr. Paulo Rogério Ferreti Bonan']</msg>
+<status status="PASS" starttime="20231002 11:15:00.895" endtime="20231002 11:15:00.896"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.897" endtime="20231002 11:15:00.899"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.816" endtime="20231002 11:15:00.900"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.921" level="INFO">Text: 'Prof. Dr. Rafael Nascimento'</msg>
+<msg timestamp="20231002 11:15:00.921" level="INFO">${nome} = Prof. Dr. Rafael Nascimento</msg>
+<status status="PASS" starttime="20231002 11:15:00.901" endtime="20231002 11:15:00.921"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.936" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:00.936" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:00.922" endtime="20231002 11:15:00.936"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.936" endtime="20231002 11:15:00.936"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.936" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Rafael Nascimento']</msg>
+<status status="PASS" starttime="20231002 11:15:00.936" endtime="20231002 11:15:00.936"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.936" endtime="20231002 11:15:00.936"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.900" endtime="20231002 11:15:00.936"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.963" level="INFO">Text: 'Prof. Dr. Ricardo Ishak'</msg>
+<msg timestamp="20231002 11:15:00.963" level="INFO">${nome} = Prof. Dr. Ricardo Ishak</msg>
+<status status="PASS" starttime="20231002 11:15:00.936" endtime="20231002 11:15:00.964"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:00.980" level="INFO">Text: 'Universidade Federal do Pará'</msg>
+<msg timestamp="20231002 11:15:00.981" level="INFO">${universidade} = Universidade Federal do Pará</msg>
+<status status="PASS" starttime="20231002 11:15:00.964" endtime="20231002 11:15:00.981"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:00.981" endtime="20231002 11:15:00.981"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:00.983" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal do Pará', 'Prof. Dr. Ricardo Ishak']</msg>
+<status status="PASS" starttime="20231002 11:15:00.982" endtime="20231002 11:15:00.983"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:00.983" endtime="20231002 11:15:00.984"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.936" endtime="20231002 11:15:00.984"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.004" level="INFO">Text: 'Prof. Dr. Robinson Sabino-Silva'</msg>
+<msg timestamp="20231002 11:15:01.004" level="INFO">${nome} = Prof. Dr. Robinson Sabino-Silva</msg>
+<status status="PASS" starttime="20231002 11:15:00.985" endtime="20231002 11:15:01.004"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.020" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:01.020" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:01.004" endtime="20231002 11:15:01.020"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:01.020" endtime="20231002 11:15:01.020"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:01.020" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Robinson Sabino-Silva']</msg>
+<status status="PASS" starttime="20231002 11:15:01.020" endtime="20231002 11:15:01.020"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:01.020" endtime="20231002 11:15:01.020"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:00.985" endtime="20231002 11:15:01.020"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.053" level="INFO">Text: 'Prof. Dr. Robson José de Oliveira Júnior'</msg>
+<msg timestamp="20231002 11:15:01.053" level="INFO">${nome} = Prof. Dr. Robson José de Oliveira Júnior</msg>
+<status status="PASS" starttime="20231002 11:15:01.020" endtime="20231002 11:15:01.053"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.053" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:01.053" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:01.053" endtime="20231002 11:15:01.053"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:01.053" endtime="20231002 11:15:01.068"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:01.070" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Robson José de Oliveira Júnior']</msg>
+<status status="PASS" starttime="20231002 11:15:01.068" endtime="20231002 11:15:01.070"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:01.070" endtime="20231002 11:15:01.070"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:01.020" endtime="20231002 11:15:01.070"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.087" level="INFO">Text: 'Prof. Dr. Tiago Wilson Patriarca Mineo'</msg>
+<msg timestamp="20231002 11:15:01.087" level="INFO">${nome} = Prof. Dr. Tiago Wilson Patriarca Mineo</msg>
+<status status="PASS" starttime="20231002 11:15:01.070" endtime="20231002 11:15:01.087"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:01.103" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:01.103" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:01.087" endtime="20231002 11:15:01.103"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:01.103" endtime="20231002 11:15:01.103"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:01.103" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Prof. Dr. Tiago Wilson Patriarca Mineo']</msg>
+<status status="PASS" starttime="20231002 11:15:01.103" endtime="20231002 11:15:01.103"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:01.103" endtime="20231002 11:15:01.109"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:01.070" endtime="20231002 11:15:01.109"/>
+</iter>
+<status status="PASS" starttime="20231002 11:15:00.610" endtime="20231002 11:15:01.109"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<msg timestamp="20231002 11:15:02.121" level="INFO">Property: {'0': 'next'}</msg>
+<msg timestamp="20231002 11:15:02.309" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-5.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-5.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:15:02.309" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:15:02.309" level="FAIL">Classes of //ul[contains(@class, "pagination")]/li[contains(@class, 'next')] '['next']' (list) should contain '['disabled']' (list)</msg>
+<status status="FAIL" starttime="20231002 11:15:01.109" endtime="20231002 11:15:02.310"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:02.312" endtime="20231002 11:15:02.312"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:15:01.109" endtime="20231002 11:15:02.312"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231002 11:15:02.313" endtime="20231002 11:15:02.816"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="PASS" starttime="20231002 11:15:02.816" endtime="20231002 11:15:03.546"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:02.312" endtime="20231002 11:15:03.546"/>
+</branch>
+<status status="PASS" starttime="20231002 11:15:01.109" endtime="20231002 11:15:03.546"/>
+</try>
+<status status="PASS" starttime="20231002 11:15:00.610" endtime="20231002 11:15:03.546"/>
+</iter>
+<iter>
+<for flavor="IN ZIP">
+<var>${membroElement}</var>
+<var>${instituicaoElement}</var>
+<value>${pesquisadoresNomes}</value>
+<value>${pesquisadoresInstituicao}</value>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=0</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=0</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.592" level="INFO">Text: 'Prof. Dr. Vasco Ariston de Carvalho Azevedo'</msg>
+<msg timestamp="20231002 11:15:03.592" level="INFO">${nome} = Prof. Dr. Vasco Ariston de Carvalho Azevedo</msg>
+<status status="PASS" starttime="20231002 11:15:03.547" endtime="20231002 11:15:03.592"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.611" level="INFO">Text: 'Universidade Federal de Minas Gerais'</msg>
+<msg timestamp="20231002 11:15:03.612" level="INFO">${universidade} = Universidade Federal de Minas Gerais</msg>
+<status status="PASS" starttime="20231002 11:15:03.592" endtime="20231002 11:15:03.612"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.612" endtime="20231002 11:15:03.612"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.613" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Minas Gerais', 'Prof. Dr. Vasco Ariston de Carvalho Azevedo']</msg>
+<status status="PASS" starttime="20231002 11:15:03.613" endtime="20231002 11:15:03.613"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.614" endtime="20231002 11:15:03.615"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.547" endtime="20231002 11:15:03.615"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=1</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=1</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.635" level="INFO">Text: 'Profa. Dra. Adriana Freitas Neves'</msg>
+<msg timestamp="20231002 11:15:03.636" level="INFO">${nome} = Profa. Dra. Adriana Freitas Neves</msg>
+<status status="PASS" starttime="20231002 11:15:03.616" endtime="20231002 11:15:03.636"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.656" level="INFO">Text: 'Universidade Federal de Goiás'</msg>
+<msg timestamp="20231002 11:15:03.657" level="INFO">${universidade} = Universidade Federal de Goiás</msg>
+<status status="PASS" starttime="20231002 11:15:03.637" endtime="20231002 11:15:03.657"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.657" endtime="20231002 11:15:03.657"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.658" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Goiás', 'Profa. Dra. Adriana Freitas Neves']</msg>
+<status status="PASS" starttime="20231002 11:15:03.657" endtime="20231002 11:15:03.658"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.658" endtime="20231002 11:15:03.659"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.615" endtime="20231002 11:15:03.660"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=2</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=2</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.682" level="INFO">Text: 'Profa. Dra. Ana Graci Brito Madurro'</msg>
+<msg timestamp="20231002 11:15:03.682" level="INFO">${nome} = Profa. Dra. Ana Graci Brito Madurro</msg>
+<status status="PASS" starttime="20231002 11:15:03.660" endtime="20231002 11:15:03.682"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.698" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:03.698" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:03.683" endtime="20231002 11:15:03.699"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.699" endtime="20231002 11:15:03.700"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.702" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Profa. Dra. Ana Graci Brito Madurro']</msg>
+<status status="PASS" starttime="20231002 11:15:03.700" endtime="20231002 11:15:03.702"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.703" endtime="20231002 11:15:03.705"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.660" endtime="20231002 11:15:03.705"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=3</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=3</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.724" level="INFO">Text: 'Profa. Dra. Belchiolina Beatriz Fonseca'</msg>
+<msg timestamp="20231002 11:15:03.724" level="INFO">${nome} = Profa. Dra. Belchiolina Beatriz Fonseca</msg>
+<status status="PASS" starttime="20231002 11:15:03.706" endtime="20231002 11:15:03.724"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.740" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:03.740" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:03.724" endtime="20231002 11:15:03.740"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.740" endtime="20231002 11:15:03.741"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.742" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Profa. Dra. Belchiolina Beatriz Fonseca']</msg>
+<status status="PASS" starttime="20231002 11:15:03.741" endtime="20231002 11:15:03.742"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.742" endtime="20231002 11:15:03.743"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.705" endtime="20231002 11:15:03.744"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=4</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=4</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.807" level="INFO">Text: 'Profa. Dra. Camila Alexandrina Viana de Figueirêdo'</msg>
+<msg timestamp="20231002 11:15:03.807" level="INFO">${nome} = Profa. Dra. Camila Alexandrina Viana de Figueirêdo</msg>
+<status status="PASS" starttime="20231002 11:15:03.745" endtime="20231002 11:15:03.808"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.831" level="INFO">Text: 'Universidade Federal da Bahia'</msg>
+<msg timestamp="20231002 11:15:03.832" level="INFO">${universidade} = Universidade Federal da Bahia</msg>
+<status status="PASS" starttime="20231002 11:15:03.808" endtime="20231002 11:15:03.832"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.832" endtime="20231002 11:15:03.833"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.835" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Bahia', 'Profa. Dra. Camila Alexandrina Viana de Figueirêdo']</msg>
+<status status="PASS" starttime="20231002 11:15:03.834" endtime="20231002 11:15:03.835"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.836" endtime="20231002 11:15:03.837"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.744" endtime="20231002 11:15:03.837"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=5</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=5</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.865" level="INFO">Text: 'Profa. Dra. Carina da Silva Pinheiro'</msg>
+<msg timestamp="20231002 11:15:03.865" level="INFO">${nome} = Profa. Dra. Carina da Silva Pinheiro</msg>
+<status status="PASS" starttime="20231002 11:15:03.838" endtime="20231002 11:15:03.866"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.875" level="INFO">Text: 'Universidade Federal da Bahia'</msg>
+<msg timestamp="20231002 11:15:03.875" level="INFO">${universidade} = Universidade Federal da Bahia</msg>
+<status status="PASS" starttime="20231002 11:15:03.866" endtime="20231002 11:15:03.875"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.875" endtime="20231002 11:15:03.875"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.875" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal da Bahia', 'Profa. Dra. Carina da Silva Pinheiro']</msg>
+<status status="PASS" starttime="20231002 11:15:03.875" endtime="20231002 11:15:03.875"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.875" endtime="20231002 11:15:03.875"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.838" endtime="20231002 11:15:03.875"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=6</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=6</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.903" level="INFO">Text: 'Profa. Dra. Eloísa Amália Vieira Ferro'</msg>
+<msg timestamp="20231002 11:15:03.903" level="INFO">${nome} = Profa. Dra. Eloísa Amália Vieira Ferro</msg>
+<status status="PASS" starttime="20231002 11:15:03.875" endtime="20231002 11:15:03.903"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.919" level="INFO">Text: 'Universidade Federal de Alagoas'</msg>
+<msg timestamp="20231002 11:15:03.919" level="INFO">${universidade} = Universidade Federal de Alagoas</msg>
+<status status="PASS" starttime="20231002 11:15:03.903" endtime="20231002 11:15:03.919"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.919" endtime="20231002 11:15:03.919"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.919" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Alagoas', 'Profa. Dra. Eloísa Amália Vieira Ferro']</msg>
+<status status="PASS" starttime="20231002 11:15:03.919" endtime="20231002 11:15:03.919"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.919" endtime="20231002 11:15:03.919"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.875" endtime="20231002 11:15:03.919"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=7</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=7</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.933" level="INFO">Text: 'Profa. Dra. Fabiane Caxico de Abreu Galdino'</msg>
+<msg timestamp="20231002 11:15:03.933" level="INFO">${nome} = Profa. Dra. Fabiane Caxico de Abreu Galdino</msg>
+<status status="PASS" starttime="20231002 11:15:03.919" endtime="20231002 11:15:03.933"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.953" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:03.953" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:03.933" endtime="20231002 11:15:03.953"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.953" endtime="20231002 11:15:03.953"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:03.953" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Profa. Dra. Fabiane Caxico de Abreu Galdino']</msg>
+<status status="PASS" starttime="20231002 11:15:03.953" endtime="20231002 11:15:03.953"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:03.953" endtime="20231002 11:15:03.953"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.919" endtime="20231002 11:15:03.953"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=8</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=8</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.983" level="INFO">Text: 'Profa. Dra. Françoise Vasconcelos Botelho'</msg>
+<msg timestamp="20231002 11:15:03.983" level="INFO">${nome} = Profa. Dra. Françoise Vasconcelos Botelho</msg>
+<status status="PASS" starttime="20231002 11:15:03.953" endtime="20231002 11:15:03.983"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:03.986" level="INFO">Text: 'Universidade Federal de Uberlândia'</msg>
+<msg timestamp="20231002 11:15:03.986" level="INFO">${universidade} = Universidade Federal de Uberlândia</msg>
+<status status="PASS" starttime="20231002 11:15:03.983" endtime="20231002 11:15:03.986"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" starttime="20231002 11:15:03.986" endtime="20231002 11:15:03.986"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231002 11:15:04.001" level="INFO">${list} = ['Nanotecnologia', 'INCT-TeraNano', '', 'Universidade Federal de Uberlândia', 'Profa. Dra. Françoise Vasconcelos Botelho']</msg>
+<status status="PASS" starttime="20231002 11:15:03.986" endtime="20231002 11:15:04.001"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="PASS" starttime="20231002 11:15:04.002" endtime="20231002 11:15:04.003"/>
+</kw>
+<status status="PASS" starttime="20231002 11:15:03.953" endtime="20231002 11:15:04.003"/>
+</iter>
+<iter>
+<var name="${membroElement}">//table/tbody/tr/td[1]/a &gt;&gt; nth=9</var>
+<var name="${instituicaoElement}">//table/tbody/tr/td[2]/a &gt;&gt; nth=9</var>
+<kw name="Get Text" library="Browser">
+<var>${nome}</var>
+<arg>${membroElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:04.019" level="INFO">Text: 'Profa. Dra. Isabela Maria Bernardes Goulart'</msg>
+<msg timestamp="20231002 11:15:04.032" level="INFO">${nome} = Profa. Dra. Isabela Maria Bernardes Goulart</msg>
+<status status="PASS" starttime="20231002 11:15:04.003" endtime="20231002 11:15:04.032"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${universidade}</var>
+<arg>${instituicaoElement}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231002 11:15:09.253" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-6.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-6.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231002 11:15:09.253" level="INFO">See also file:///C:/workspace/planilha%20python/playwright-log.txt for additional details.</msg>
+<msg timestamp="20231002 11:15:09.253" level="FAIL">TimeoutError: locator.elementHandle: Timeout 5000ms exceeded.
+=========================== logs ===========================
+waiting for locator('xpath=//table/tbody/tr/td[2]/a').nth(9)
+============================================================
+Tip: Use "Set Browser Timeout" for increasing the timeout or double check your locator as the targeted element(s) couldn't be found.</msg>
+<status status="FAIL" starttime="20231002 11:15:04.032" endtime="20231002 11:15:09.258"/>
+</kw>
+<kw name="Set Browser Timeout" library="Browser">
+<arg>5s</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.258" endtime="20231002 11:15:09.259"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>Nanotecnologia</arg>
+<arg>INCT-TeraNano</arg>
+<arg>${EMPTY}</arg>
+<arg>${universidade}</arg>
+<arg>${nome}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.259" endtime="20231002 11:15:09.260"/>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<arg>pesquisa6.csv</arg>
+<arg>${list}</arg>
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.260" endtime="20231002 11:15:09.260"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:15:04.003" endtime="20231002 11:15:09.260"/>
+</iter>
+<status status="FAIL" starttime="20231002 11:15:03.547" endtime="20231002 11:15:09.260"/>
+</for>
+<try>
+<branch type="TRY">
+<kw name="Get Classes" library="Browser">
+<arg>//ul[contains(@class, "pagination")]/li[contains(@class, 'next')]</arg>
+<arg>contains</arg>
+<arg>disabled</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns all classes of an element as a list.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.262" endtime="20231002 11:15:09.262"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${proximo}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.263" endtime="20231002 11:15:09.263"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 11:15:09.261" endtime="20231002 11:15:09.263"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Click" library="Browser">
+<arg>//li//a[contains(@title, 'Ir para a próxima página')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.263" endtime="20231002 11:15:09.264"/>
+</kw>
+<kw name="Wait Until Network Is Idle" library="Browser">
+<tag>HTTP</tag>
+<tag>Wait</tag>
+<doc>Waits until there has been at least one instance of 500 ms of no network traffic on the page after loading.</doc>
+<status status="NOT RUN" starttime="20231002 11:15:09.264" endtime="20231002 11:15:09.264"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 11:15:09.263" endtime="20231002 11:15:09.264"/>
+</branch>
+<status status="NOT RUN" starttime="20231002 11:15:09.261" endtime="20231002 11:15:09.264"/>
+</try>
+<status status="FAIL" starttime="20231002 11:15:03.546" endtime="20231002 11:15:09.264"/>
+</iter>
+<status status="FAIL" starttime="20231002 11:14:47.967" endtime="20231002 11:15:09.265"/>
+</while>
+<status status="FAIL" starttime="20231002 11:14:47.826" endtime="20231002 11:15:09.265"/>
+</kw>
+<kw name="Close Context" library="Browser" type="TEARDOWN">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes a Context.</doc>
+<msg timestamp="20231002 11:15:09.273" level="INFO">[
+  {
+    "type": "chromium",
+    "id": "browser=07b98dec-5bfd-4682-8a6b-deffb5aac7fd",
+    "contexts": [
+      {
+        "type": "context",
+        "id": "context=7a689f6d-47be-4bf0-862d-d64520f6576d",
+        "activePage": "page=4c9ea4e5-2d6d-4e72-bac0-499af3fa24a8",
+        "pages": [
+          {
+            "type": "page",
+            "title": "Pesquisadores | Instituto Nacional de Ci\u00eancia e Tecnologia",
+            "url": "http://www.teranano.ufu.br/pt-br/participantes/pesquisadores?page=5",
+            "id": "page=4c9ea4e5-2d6d-4e72-bac0-499af3fa24a8",
+            "timestamp": 1696256085.588
+          }
+        ]
+      }
+    ],
+    "activeContext": "context=7a689f6d-47be-4bf0-862d-d64520f6576d",
+    "activeBrowser": true
+  }
+]</msg>
+<msg timestamp="20231002 11:15:09.274" level="INFO">Switching browser to CURRENT</msg>
+<msg timestamp="20231002 11:15:09.279" level="INFO">Returned active browser id</msg>
+<msg timestamp="20231002 11:15:09.280" level="INFO">Switching browser to browser=07b98dec-5bfd-4682-8a6b-deffb5aac7fd</msg>
+<msg timestamp="20231002 11:15:09.283" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20231002 11:15:09.283" level="INFO">Switching context to CURRENT in CURRENT</msg>
+<msg timestamp="20231002 11:15:09.288" level="INFO">Returned active context id</msg>
+<msg timestamp="20231002 11:15:09.288" level="INFO">Switching context to context=7a689f6d-47be-4bf0-862d-d64520f6576d in CURRENT</msg>
+<msg timestamp="20231002 11:15:09.292" level="INFO">[
+  {
+    "type": "chromium",
+    "id": "browser=07b98dec-5bfd-4682-8a6b-deffb5aac7fd",
+    "contexts": [
+      {
+        "type": "context",
+        "id": "context=7a689f6d-47be-4bf0-862d-d64520f6576d",
+        "activePage": "page=4c9ea4e5-2d6d-4e72-bac0-499af3fa24a8",
+        "pages": [
+          {
+            "type": "page",
+            "title": "Pesquisadores | Instituto Nacional de Ci\u00eancia e Tecnologia",
+            "url": "http://www.teranano.ufu.br/pt-br/participantes/pesquisadores?page=5",
+            "id": "page=4c9ea4e5-2d6d-4e72-bac0-499af3fa24a8",
+            "timestamp": 1696256085.588
+          }
+        ]
+      }
+    ],
+    "activeContext": "context=7a689f6d-47be-4bf0-862d-d64520f6576d",
+    "activeBrowser": true
+  }
+]</msg>
+<msg timestamp="20231002 11:15:09.296" level="INFO">Successfully changed active context</msg>
+<msg timestamp="20231002 11:15:09.365" level="INFO">Successfully closed Context</msg>
+<status status="PASS" starttime="20231002 11:15:09.267" endtime="20231002 11:15:09.366"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:45.299" endtime="20231002 11:15:09.367">TimeoutError: locator.elementHandle: Timeout 5000ms exceeded.
+=========================== logs ===========================
+waiting for locator('xpath=//table/tbody/tr/td[2]/a').nth(9)
+============================================================
+Tip: Use "Set Browser Timeout" for increasing the timeout or double check your locator as the targeted element(s) couldn't be found.</status>
+</test>
+<kw name="Close Browser" library="Browser" type="TEARDOWN">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<msg timestamp="20231002 11:15:09.627" level="INFO">Closed browser</msg>
+<status status="PASS" starttime="20231002 11:15:09.380" endtime="20231002 11:15:09.628"/>
+</kw>
+<status status="FAIL" starttime="20231002 11:14:43.944" endtime="20231002 11:15:09.629"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="pegaDados">pegaDados</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231002 11:14:47.917" level="WARN">Keyword 'Get Elements' found both from a custom library 'Browser' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'Browser.Get Elements' or 'XML.Get Elements'.</msg>
+<msg timestamp="20231002 11:14:47.936" level="WARN">Keyword 'Get Elements' found both from a custom library 'Browser' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'Browser.Get Elements' or 'XML.Get Elements'.</msg>
+</errors>
+</robot>

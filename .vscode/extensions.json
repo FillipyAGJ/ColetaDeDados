@@ -1,0 +1,14 @@
+{
+    "robot.pythonpath": [
+        "./",
+    ],
+    "robotcode.robot.pythonPath": [
+        "./",
+    ],
+    "robotcode.robot.languages": [
+        "ptbr"
+    ],
+    "robot.language": [
+        "ptbr"
+    ],
+}
